@@ -1,0 +1,103 @@
+/* Add additional stylesheets below
+-------------------------------------------------- */
+/*
+  Bootstrap's documentation styles
+  Special styles for presenting Bootstrap's documentation and examples
+*/
+
+/* Body and structure
+-------------------------------------------------- */
+body {
+  background-color: #fff;
+  position: relative;
+}
+section {
+  padding-top: 60px;
+}
+section > .row {
+  margin-bottom: 10px;
+}
+
+/* Jumbotrons
+-------------------------------------------------- */
+.jumbotron {
+  min-width: 940px;
+  padding-top: 40px;
+}
+.jumbotron .inner {
+/*  padding: 10px 0;
+  background: #8adc92;
+  background: -webkit-gradient(linear, left bottom, right top, from(#B3E862), to(#73dac1));
+  background: -moz-linear-gradient(left bottom, #B3E862, #73dac1);
+  background: gradient(linear, left bottom, right top, from(#B3E862), to(#73dac1));
+  color: #1e4432;*/
+   -webkit-box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
+     -moz-box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
+/*         box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
+*/}
+.jumbotron h1, p {
+  margin-bottom: 9px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+}
+.jumbotron h1 {
+  font-size: 54px;
+  line-height: 1;
+  text-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+.jumbotron p {
+  font-weight: 300;
+}
+.jumbotron .lead {
+  font-size: 20px;
+  line-height: 27px;
+}
+.jumbotron p, a {
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Specific jumbotrons
+------------------------- */
+/* main docs page */
+.masthead {
+  background-color: #049cd9;
+  background-repeat: no-repeat;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#004D9F), to(#049cd9));
+  background-image: -webkit-linear-gradient(#004D9F, #049cd9);
+  background-image: -moz-linear-gradient(#004D9F, #049cd9);
+  background-image: -o-linear-gradient(top, #004D9F, #049cd9);
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#004D9F), to(#049cd9));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#004D9F', endColorstr='#049cd9', GradientType=0); /* IE8 and down */
+}
+
+/* Footer
+-------------------------------------------------- */
+.footer {
+  background-color: #eee;
+  min-width: 940px;
+  padding: 20px 0;
+  text-shadow: 0 1px 0 #fff;
+  border-top: 1px solid #e5e5e5;
+  -webkit-box-shadow: inset 0 5px 15px rgba(0,0,0,.025);
+     -moz-box-shadow: inset 0 5px 15px rgba(0,0,0,.025);
+/*          box-shadow: inset 0 5px 15px rgba(0,0,0,.025);
+*/}
+.footer p {
+  color: #555;
+}
+
+/* Topbar special styles
+-------------------------------------------------- */
+.topbar {
+  position: absolute;
+  margin: 0 -20px;
+}
+.topbar .topbar-inner {
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}

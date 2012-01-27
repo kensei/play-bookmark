@@ -1,0 +1,35 @@
+<label for="tags">
+    &{'_tags'}
+</label>
+<style type="text/css">
+    .tags-list .tag {
+        cursor: pointer;
+        padding: 1px 4px;
+    }
+    .tags-list .selected {
+        background: #222;
+        color: #fff;
+    }
+</style>
+<script type="text/javascript">
+    var toggle = function(tagEl) {
+        var input = document.getElementById('h'+tagEl.id);
+        if(tagEl.className.indexOf('selected') > -1) {
+            tagEl.className = 'tag';
+            input.value = '';
+        } else {
+            tagEl.className = 'tag selected';
+            input.value = tagEl.id;
+        }
+    }
+</script>
+<div class="tags-list">
+    #{list items:models.Tag.findAll(), as:'tag'}
+       <span id="${tag.id}" onclick="toggle(this)" 
+            class="tag ${_bookmark?.tags?.contains(tag) ? 'selected' : ''}">
+           ${tag}
+       </span> 
+       <input id="h${tag.id}" type="hidden" name="${fieldName}" 
+                value="${_bookmark?.tags?.contains(tag) ? tag.id : ''}" />
+    #{/list}
+</div>

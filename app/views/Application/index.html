@@ -1,0 +1,53 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<div id="body">
+    <div class="container">
+        <section id="leatest-bookmark">
+            <h1>${bookmark_owner}のブックマーク</h1>
+            <div class="row">
+                <div class="span16">
+                    #{if frontBookmarks.size() > 0}
+                        <table class="zebra-striped">
+                            <tbody>
+                                #{list items:frontBookmarks, as:'bookmark'}
+                                    <!-- content -->
+                                    <tr>
+                                        <td>
+                                            <h3 class="bookmark">
+                                                <a href="${bookmark.url}" target="_blank">
+                                                    <img src="http://favicon.st-hatena.com/?url=${bookmark.url}" />
+                                                    ${bookmark.title}
+                                                </a>
+                                            </h3>
+                                            <div class="meta">
+                                                <span class="bookmark-tags">
+                                                    #{list items:bookmark.tags, as:'tag'}
+                                                         <a href="@{Application.listTagged(tag.name)}">${tag}</a>${tag_isLast ? '' : ', '}
+                                                    #{/list}
+                                                </span>
+                                                <span class="comment">${bookmark.comment}</span>
+                                                <span class="mark_date">${bookmark.markedAt.format("yyyy-MM-dd")}</span>
+                                                #{if session.get("name")}
+                                                    <a href="@{Admin.setBookmark(bookmark.id)}"><span class="label success">Mod</span></a>
+                                                    <a href="@{Admin.delBookmark(bookmark.id)}"><span class="label warning">Del</span></a>
+                                                #{/if}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!-- /content -->
+                                #{/list}
+                            </tbody>
+                        </table>
+                    #{/if}
+                    #{else}
+                        <div class="empty">
+                            No Bookmark data.
+                        </div>
+                    #{/else}
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+#{pagenavi total:total, current:current /}

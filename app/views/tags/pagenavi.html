@@ -1,0 +1,37 @@
+%{ def counter = (_total > 5) ? 10 : 5; }%
+%{ def start = ((_current - 1) > 0) ? (((_current - 1) / 10) as Integer) * 10 + 1 : 1; }%
+%{ def maxnavi = ((start + counter - 1) >= _total) ? _total : start + counter - 1; }%
+<!-- <div>${_current + "/" + _total}</div>
+ <div>${counter + ", " + start + ", " + maxnavi}</div>  -->
+#{if _total > 1}
+    <nav>
+        <div class="container">
+            <div class="pagination">
+                <ul>
+                    #{if _current == 1 || (_current / 10) == 0}
+                        <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+                    #{/if}
+                    #{else}
+                        <li class="prev"><a href="?page=${_current - 1}">&larr; Previous</a></li>
+                    #{/else}
+                    #{if _total > 1}
+                        #{list start..maxnavi, as:'page'}
+                            #{if page == _current}
+                                <li class="active"><a href="#">${page}</a></li>
+                            #{/if}
+                            #{else}
+                                <li><a href="?page=${page}">${page}</a></li>
+                            #{/else}
+                        #{/list}
+                    #{/if}
+                    #{if _current >= _total}
+                        <li class="next disabled"><a href="#">Next &rarr;</a></li>
+                    #{/if}
+                    #{else}
+                        <li class="next"><a href="?page=${_current + 1}">Next &rarr;</a></li>
+                    #{/else}
+                </ul>
+                </div>
+        </div>
+    </div>
+#{/if}

@@ -1,0 +1,31 @@
+User(bob):
+    email:          bob@gmail.com
+    password:       secret
+    fullname:       Bob
+    isAdmin:        true
+    
+User(jeff):
+    email:          jeff@gmail.com
+    password:       secret
+    fullname:       Jeff
+    
+Bookmark(firstBobBookmark):
+    url:          http://playdocja.appspot.com/documentation/1.2.3/home
+    markedAt:       2009-06-14
+    author:         bob
+    title:          playdoc ja
+    comment:        comment1
+
+Bookmark(secondBobBookmark):
+    url:          http://twitter.github.com/bootstrap/
+    markedAt:       2009-03-25
+    author:         bob
+    title:          bootstrap official
+    comment:        English
+
+Bookmark(thirdBookmark):
+    url:          http://jquery.com/
+    markedAt:       2009-06-06
+    author:         jeff
+    title:          jquary official
+    comment:        日本語

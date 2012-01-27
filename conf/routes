@@ -1,0 +1,30 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       Application.index
+GET     /bookmarks/{tag}                        Application.listTagged
+GET     /admin/new                              Admin.putBookmark
+GET     /admin/bokkmarks/{id}                   Admin.setBookmark
+GET     /admin/bokkmarks/{id}                   Admin.delBookmark
+POST    /admin/bookmarks/{id}                   Admin.save
+POST    /admin/new                              Admin.save
+
+# ajax
+GET     /ajaxurl                                Ajax.url
+
+# Import CRUD routes
+*      /admin                                   module:crud
+
+# Import Secure routes
+*       /                                       module:secure
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}

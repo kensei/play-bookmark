@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta charset="${_response_encoding}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        #{get 'moreStyles' /}
+        <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.css">
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        <script src="@{'/public/javascripts/jquery-1.5.2.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        #{get 'moreScripts' /}
+    </head>
+    <body>
+        <div class="topbar" data-scrollspy="scrollspy" >
+            <div class="topbar-inner">
+                <div class="container">
+                    <ul class="nav"></ul>
+                    <h3><a href="#">Play Bookmark</a></h3>
+                    <ul class="nav secondary-nav">
+                        #{if session.get("name")}
+                            <li><a href="@{Admin.putBookmark()}">追加</a>
+                            <li><a href="@{Secure.logout()}">ログアウト</a></li>
+                        #{/if}
+                        #{else}
+                            <li><a href="@{Admin.index()}">ログイン</a>
+                        #{/else}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <header class="jumbotron masthead" id="overview">
+            <div class="inner">
+                <div class="container">
+                    <h1>Play Bookmark</h1>
+                    <p class="lead">
+                        Build on Play!Framework
+                    </p>
+                </div><!-- /container -->
+            </div>
+        </header>
+        #{doLayout /}
+        <footer class="footer">
+            <div class="container">
+                <p class="pull-right"><a href="#">Back to top</a></p>
+                <p>
+                    Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a><br />
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>

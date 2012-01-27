@@ -1,0 +1,6 @@
+# Application dependencies
+
+require:
+    - play
+    - net.sourceforge.nekohtml -> nekohtml 1.9.15
+    - xerces -> xercesImpl 2.9.1

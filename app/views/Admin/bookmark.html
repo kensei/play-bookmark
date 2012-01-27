@@ -1,0 +1,93 @@
+#{extends 'main.html' /}
+#{set title:'Entry' /}
+
+<div class="container">
+    <div class="page-header">
+        <h1>${url}</h1>
+    </div>
+    <div class="row">
+        <div class="span12">
+            #{if delflg}
+                <form method="POST" action="@{Admin.delete(bookmark.id)}">
+            #{/if}
+            #{else}
+                <form method="POST" action="@{Admin.save(bookmark?.id)}">
+            #{/else}
+                #{ifErrors}
+                <div class="alert-message warning">
+                    <a class="close" href="#">Å~</a>
+                    <p><strong>Validation Error!</strong> Best check yo self, youÅfre not looking too good.</p>
+                    #{errors}
+                        <li>${error}</li>
+                    #{/errors}
+                </div>
+                #{/ifErrors}
+                <fieldset>
+                    <div class="clearfix">
+                        <label>URL *</label>
+                        <div class="input">
+                            <div class="clearfix"><input class="span8" id="bookmark_url" name="url" type="text" placeholder="blog url" value="${bookmark?.url}" /></div>
+                            <span class="error">#{error 'bookmark.url' /}</span>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                        <label>Title *</label>
+                        <div class="input">
+                            #{if bookmark}
+                                <div class="clearfix"><input class="span8" id="title" name="title" type="text" placeholder="title" value="${bookmark?.title}" /></div>
+                            #{/if}
+                            #{else}
+                                <span class="unditable-input" name="title" id="title" value="put url to auto get title"></span>
+                                <input type="hidden" name="title" id="title">
+                            #{/else}
+                        </div>
+                    </div>
+                    <div class="clearfix">
+		                <label>Comment</label>
+		                <div class="input">
+		                    <div class="clearfix"><input class="span6" id="" name="comment" type="text" placeholder="comment" /></div>
+		                </div>
+		            </div>
+                    <div class="clearfix">
+                        <label>EntryDate *</label>
+                        <div class="input">
+                            #{if bookmark}
+                                <span class="unditable-input" name="entrydate">${bookmark.markedAt.format("yyyy-MM-dd")}</span>
+                                <input type="hidden" name="entrydate" value=${bookmark.markedAt.format("yyyy-MM-dd")}>
+                            #{/if}
+                            #{else}
+                                <span class="unditable-input" name="entrydate">${entrydate.format("yyyy-MM-dd")}</span>
+                                <input type="hidden" name="entrydate" value=${entrydate.format("yyyy-MM-dd")}>
+                            #{/else}
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                        <label>Tag</label>
+                        <div class="input">
+                            #{tagselector bookmark:bookmark, tags:tags /}
+                        </div>
+                    </div>
+                </fieldset>
+                #{if delflg}
+                    <div class="actions">
+                        <button type="submit" class="btn primary">Delete</button>&nbsp;<a href="@{Application.index}" class="btn small">Return</a>
+                    </div>
+                #{/if}
+                #{else}
+                    <div class="actions">
+                        <button type="submit" class="btn primary">Save changes</button>&nbsp;<button type="reset" class="btn">Cancel</button>
+                    </div>
+                #{/else}
+            </form>
+        </div>
+    </div>
+</div>
+<script language="JavaScript">
+$('#bookmark_url').blur(function(){getUriTitle();})
+function getUriTitle()
+{
+	var inputurl = $('#bookmark_url').val();
+    var textAction = #{jsAction @Ajax.url(':uri') /};
+    $('#title').load(textAction({uri: inputurl}));
+}
+</script>
